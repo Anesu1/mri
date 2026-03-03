@@ -35,43 +35,87 @@ export default function HorizontalServices() {
     });
 
     // Smooth horizontal scroll movement
-    const x = useTransform(scrollYProgress, [0.1, 0.9], ["30%", "-70%"]);
+    const x = useTransform(scrollYProgress, [0.1, 0.9], ["20%", "-60%"]);
 
     return (
-        <div ref={containerRef} className="relative h-[350vh] bg-[#F8F9FA]">
-            <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
-                {/* Header from Screenshot */}
-                <div className="container mx-auto px-16 mb-20 flex items-end justify-between">
-                    <div className="space-y-4">
-                        <span className="text-sm font-semibold text-heading/50 uppercase tracking-widest">Our Services</span>
-                        <h2 className="text-[52px] font-bold text-heading leading-[1] max-w-2xl tracking-tighter">
-                            Expert Healthcare Services <br />
-                            Tailored to Your Well-being
-                        </h2>
+        <>
+            {/* Desktop: Horizontal Scroll */}
+            <div ref={containerRef} className="relative hidden lg:block h-[350vh] bg-[#F8F9FA]">
+                <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
+                    <div className="container mx-auto px-16 mb-20 flex items-end justify-between">
+                        <div className="space-y-4">
+                            <span className="text-sm font-semibold text-heading/50 uppercase tracking-widest italic">Our Services</span>
+                            <h2 className="text-[64px] font-black text-heading leading-[1] max-w-2xl tracking-tighter italic">
+                                Expert Healthcare <br />
+                                <span className="text-primary italic">Tailored to You.</span>
+                            </h2>
+                        </div>
+                        <Link href="/services">
+                            <Button className="rounded-full px-12 py-6 bg-[#2563EB] hover:bg-blue-700 text-white font-bold text-sm transition-all shadow-xl shadow-blue-500/20 h-auto">
+                                See All Services
+                            </Button>
+                        </Link>
                     </div>
-                    <Button className="rounded-full px-10 py-5 bg-[#2563EB] hover:bg-blue-700 text-white font-bold text-sm transition-all shadow-lg shadow-blue-500/20">
-                        See All Services
-                    </Button>
+
+                    <motion.div
+                        style={{ x }}
+                        className="flex gap-8 px-16 items-center"
+                    >
+                        {services.map((service, i) => (
+                            <ServiceCard
+                                key={i}
+                                service={service}
+                                index={i}
+                                scrollYProgress={scrollYProgress}
+                            />
+                        ))}
+                    </motion.div>
+                </div>
+            </div>
+
+            {/* Mobile/Tablet: Standard Vertical List */}
+            <div className="lg:hidden bg-[#F8F9FA] py-20 px-6">
+                <div className="mb-12 space-y-4 text-center">
+                    <span className="text-xs font-bold text-primary uppercase tracking-widest">Our Services</span>
+                    <h2 className="text-4xl font-black text-heading tracking-tighter italic leading-tight">
+                        Expert Healthcare <br />
+                        Tailored to You.
+                    </h2>
                 </div>
 
-                {/* The Curved Gallery Horizontal Section */}
-                <motion.div
-                    style={{ x }}
-                    className="flex gap-8 px-16 items-center"
-                >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {services.map((service, i) => (
-                        <ServiceCard
-                            key={i}
-                            service={service}
-                            index={i}
-                            scrollYProgress={scrollYProgress}
-                        />
+                        <div key={i} className="relative h-[400px] rounded-[40px] overflow-hidden group">
+                            <Image
+                                src={service.image}
+                                alt={service.title}
+                                fill
+                                className="object-cover"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                            <div className="absolute inset-x-6 bottom-6">
+                                <div className="glass-light p-6 rounded-[24px] backdrop-blur-xl border border-white/20">
+                                    <h4 className="text-xl font-black text-white italic">{service.title}</h4>
+                                </div>
+                            </div>
+                        </div>
                     ))}
-                </motion.div>
+                </div>
+
+                <div className="mt-12 text-center">
+                    <Link href="/services">
+                        <Button className="w-full sm:w-auto rounded-full px-10 py-5 bg-[#2563EB] text-white font-bold">
+                            View All Services
+                        </Button>
+                    </Link>
+                </div>
             </div>
-        </div>
+        </>
     );
 }
+
+import Link from "next/link";
+
 
 function ServiceCard({ service, index, scrollYProgress }: { service: any, index: number, scrollYProgress: any }) {
     // Fans out vertically and rotates as it scrolls (Matches screenshot fan effect)

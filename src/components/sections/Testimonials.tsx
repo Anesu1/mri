@@ -45,13 +45,13 @@ export default function Testimonials() {
     const rotation = useTransform(scrollYProgress, [0, 1], [0, -360]);
 
     return (
-        <div ref={containerRef} className="relative h-[400vh] bg-bg-primary">
+        <div ref={containerRef} className="relative h-[300vh] lg:h-[400vh] bg-bg-primary">
             <div className="sticky top-0 h-screen flex items-center overflow-hidden">
-                <div className="container mx-auto px-6 h-full flex items-center">
-                    <div className="grid lg:grid-cols-2 gap-20 items-center w-full">
+                <div className="container mx-auto px-4 md:px-6 h-full flex items-center">
+                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full">
 
-                        {/* Left: Rotating Visuals */}
-                        <div className="relative aspect-square max-w-[500px] mx-auto flex items-center justify-center">
+                        {/* Left: Rotating Visuals - Hidden on small mobile */}
+                        <div className="relative aspect-square max-w-[300px] md:max-w-[500px] mx-auto hidden sm:flex items-center justify-center">
 
                             {/* DNA Helix Background (Pinned & Rotating) */}
                             <motion.div
@@ -63,13 +63,13 @@ export default function Testimonials() {
                             </motion.div>
 
                             {/* Center Satisfaction Circle */}
-                            <div className="relative z-20 w-56 h-56 rounded-full bg-white shadow-2xl flex flex-col items-center justify-center border-[20px] border-primary/5">
-                                <div className="text-5xl font-black text-heading italic">99<span className="text-primary">%</span></div>
-                                <div className="text-[10px] font-bold text-primary uppercase tracking-[0.3em]">Satisfaction</div>
+                            <div className="relative z-20 w-32 h-32 md:w-56 md:h-56 rounded-full bg-white shadow-2xl flex flex-col items-center justify-center border-[10px] md:border-[20px] border-primary/5">
+                                <div className="text-2xl md:text-5xl font-black text-heading italic">99<span className="text-primary">%</span></div>
+                                <div className="text-[6px] md:text-[10px] font-bold text-primary uppercase tracking-[0.3em] text-center px-2">Satisfaction</div>
                                 <motion.div
                                     animate={{ rotate: 360 }}
                                     transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                                    className="absolute -inset-4 border border-primary/10 rounded-full"
+                                    className="absolute -inset-2 md:-inset-4 border border-primary/10 rounded-full"
                                 />
                             </div>
 
@@ -80,7 +80,7 @@ export default function Testimonials() {
                             >
                                 {testimonials.map((t, i) => {
                                     const angle = (i * 360) / testimonials.length;
-                                    const radius = 220; // Radius of orbit
+                                    const radius = typeof window !== 'undefined' && window.innerWidth < 768 ? 120 : 220;
 
                                     return (
                                         <AvatarNode
@@ -97,7 +97,7 @@ export default function Testimonials() {
                         </div>
 
                         {/* Right: Scrolling Testimonials */}
-                        <div className="relative h-[450px]">
+                        <div className="relative h-[400px] md:h-[450px] flex flex-col justify-center">
                             {testimonials.map((t) => (
                                 <TestimonialItem
                                     key={t.id}
@@ -111,6 +111,7 @@ export default function Testimonials() {
                 </div>
             </div>
         </div>
+
     );
 }
 

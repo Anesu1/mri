@@ -49,7 +49,8 @@ export default function TeamSection() {
                 </div>
             </div>
 
-            <div className="flex flex-col md:flex-row h-[700px] gap-4 px-6 overflow-hidden">
+            {/* Desktop: Fancy Expanding Flex */}
+            <div className="hidden lg:flex h-[750px] gap-4 px-6 overflow-hidden">
                 {team.map((member, i) => {
                     const isHovered = hoveredIndex === i;
                     const isAnythingHovered = hoveredIndex !== null;
@@ -84,7 +85,7 @@ export default function TeamSection() {
                                     fill
                                     className="object-cover"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-transparent" />
                             </motion.div>
 
                             <div className="absolute inset-0 p-12 flex flex-col justify-end">
@@ -106,7 +107,7 @@ export default function TeamSection() {
                                             transition={{ duration: 0.5, ease: "circOut" }}
                                             className="max-w-xs"
                                         >
-                                            <p className="text-white/80 text-lg leading-relaxed mb-4">
+                                            <p className="text-white/80 text-lg leading-relaxed mb-4 italic">
                                                 {member.bio}
                                             </p>
                                             <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors">
@@ -120,6 +121,27 @@ export default function TeamSection() {
                     );
                 })}
             </div>
+
+            {/* Mobile/Tablet: Standard Grid */}
+            <div className="lg:hidden grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
+                {team.map((member, i) => (
+                    <div key={i} className="relative aspect-[3/4] rounded-[32px] overflow-hidden group">
+                        <Image
+                            src={member.image}
+                            alt={member.name}
+                            fill
+                            className="object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-transparent" />
+                        <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                            <h4 className="text-3xl font-black text-white mb-1 italic tracking-tighter">{member.name}</h4>
+                            <p className="text-primary font-bold uppercase tracking-widest text-[10px] mb-4">{member.role}</p>
+                            <p className="text-white/60 text-sm line-clamp-2 italic">{member.bio}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
         </Section>
     );
 }
