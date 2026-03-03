@@ -40,7 +40,8 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 
 export default function TrustBar() {
     return (
-        <Section className="bg-bg-white border-y border-border !py-16">
+        <Section className="bg-bg-white border-y border-border !py-12 md:!py-16">
+
             <div className="flex flex-wrap items-center justify-between gap-8 md:gap-4">
                 {stats.map((stat, idx) => (
                     <div key={idx} className="flex flex-col items-center md:items-start text-center md:text-left min-w-[150px]">

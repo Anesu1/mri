@@ -31,7 +31,7 @@ export default function HealthcareServices() {
     return (
         <Section className="bg-bg-white py-20 md:py-32">
             {/* Header Row: Tag + H2 + See All Button */}
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12 md:mb-20 px-4 md:px-6 text-center md:text-left items-center md:items-start">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-8 md:mb-12 px-4 md:px-6 text-center md:text-left items-center md:items-start lg:items-end">
                 <div className="max-w-xl">
                     <Reveal>
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4">
@@ -40,8 +40,8 @@ export default function HealthcareServices() {
                         </div>
                     </Reveal>
                     <Reveal delay={0.1}>
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-heading leading-[1.1] tracking-tighter italic">
-                            Expert Healthcare <br className="hidden sm:block" />
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-heading leading-[0.9] tracking-tighter italic uppercase">
+                            Expert Care <br className="hidden sm:block" />
                             <span className="text-primary italic">Tailored to You.</span>
                         </h2>
                     </Reveal>
@@ -49,13 +49,14 @@ export default function HealthcareServices() {
 
                 <Reveal delay={0.2}>
                     <Link href="/services">
-                        <Button variant="outline" className="group h-14 md:h-16 px-8 rounded-full border-black/10 hover:border-primary transition-all">
-                            See All Services
+                        <Button size="lg" className="group h-14 md:h-16 px-8 rounded-full border-black/10 hover:border-primary transition-all">
+                            Explore Divisions
                             <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
                         </Button>
                     </Link>
                 </Reveal>
             </div>
+
 
             {/* The 4-Column Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 px-4 md:px-6">
@@ -75,8 +76,10 @@ export default function HealthcareServices() {
                                     src={service.image}
                                     alt={service.title}
                                     fill
+                                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                                     className="object-cover transition-transform duration-1000 group-hover:scale-110"
                                 />
+
                                 {/* Subtle Blue Tint Gradient */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-primary/5 opacity-80 group-hover:opacity-90 transition-all duration-500" />
                             </div>

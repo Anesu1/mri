@@ -32,39 +32,42 @@ const values = [
 
 export default function AboutPage() {
     return (
-        <main className="pt-20">
-            {/* Cinematic Hero */}
-            <Section className="relative min-h-[60vh] flex items-center overflow-hidden">
+        <main className="">
+            {/* Cinematic Hero: Redesigned for No Gaps */}
+            <Section className="relative min-h-[70vh] flex items-center overflow-hidden bg-heading !py-0">
                 <div className="absolute inset-0 z-0">
                     <Image
                         src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2000&auto=format&fit=crop"
                         alt="Medical Facility"
                         fill
-                        className="object-cover opacity-20 grayscale"
+                        className="object-cover opacity-40 grayscale group-hover:scale-110 transition-transform duration-[3s]"
+                        priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-bg-primary via-transparent to-bg-primary" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-heading/80 via-heading/40 to-heading" />
+                    <div className="absolute inset-0 noise-panel opacity-20" />
                 </div>
 
-                <div className="container mx-auto px-6 relative z-10 text-center">
+                <div className="container mx-auto px-6 relative z-10 text-center pt-40 pb-20">
                     <Reveal>
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-8">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 text-primary text-[10px] font-black uppercase tracking-[0.3em] mb-8 border border-primary/20">
                             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                             Since 1998
                         </div>
                     </Reveal>
                     <Reveal delay={0.1}>
-                        <h1 className="text-6xl md:text-9xl font-black text-heading tracking-tighter leading-[0.8] mb-12">
+                        <h1 className="text-5xl sm:text-7xl md:text-[10vw] font-black text-white tracking-tighter leading-[0.8] mb-12 uppercase italic">
                             Pioneering <br />
-                            <span className="italic text-primary">Medical Excellence.</span>
+                            <span className="text-primary italic">Excellence.</span>
                         </h1>
                     </Reveal>
                     <Reveal delay={0.2}>
-                        <p className="text-xl md:text-2xl text-body max-w-3xl mx-auto leading-relaxed font-medium">
-                            The MRI & Radiology Centre is Zimbabwe's premier diagnostic practice, dedicated to providing high-fidelity imaging through advanced technology and human compassion.
+                        <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed font-medium italic">
+                            The MRI & Radiology Centre is Zimbabwe's premier diagnostic practice, dedicated to providing high-fidelity imaging through advanced technology.
                         </p>
                     </Reveal>
                 </div>
             </Section>
+
 
             {/* Stats Bar */}
             <div className="bg-heading py-20">

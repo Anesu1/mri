@@ -4,13 +4,13 @@ import "./globals.css";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import Navbar from "@/components/navigation/Navbar";
 import LoadingHandler from "@/components/providers/LoadingHandler";
+import Footer from "@/components/navigation/Footer";
+import Cursor from "@/components/ui/Cursor";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
   subsets: ["latin"],
 });
-
-import Footer from "@/components/navigation/Footer";
 
 export const metadata: Metadata = {
   title: "MRI & Radiology Centre - Leaders in Whole Body Imaging",
@@ -27,6 +27,7 @@ export default function RootLayout({
       <body
         className={`${jakarta.variable} antialiased font-jakarta bg-bg-primary text-body selection:bg-primary/20 selection:text-primary`}
       >
+        <Cursor />
         <LoadingHandler>
           <SmoothScroll>
             <Navbar />
@@ -35,6 +36,7 @@ export default function RootLayout({
           </SmoothScroll>
         </LoadingHandler>
       </body>
+
     </html>
   );
 }

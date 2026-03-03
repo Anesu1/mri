@@ -17,8 +17,9 @@ const clients = [
 
 export default function Clients() {
     return (
-        <Section className="bg-bg-primary py-12">
-            <div className="text-center mb-10">
+        <Section className="bg-bg-primary py-8 border-y border-black/5">
+            <div className="text-center mb-6">
+
                 <Reveal>
                     <h2 className="text-xs font-bold text-primary uppercase tracking-[0.3em] mb-4">Trusted By Zimbabwe's Leading Organisations</h2>
                 </Reveal>

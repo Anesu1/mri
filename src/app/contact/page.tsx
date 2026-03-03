@@ -34,28 +34,30 @@ const contactInfo = [
 
 export default function ContactPage() {
     return (
-        <main className="pt-20">
-            {/* Contact Hero */}
-            <Section className="relative min-h-[50vh] flex items-center overflow-hidden bg-heading text-white">
-                <div className="absolute inset-0 z-0 flex items-center justify-center">
+        <main className="">
+            {/* Contact Hero: Seamless Top Design */}
+            <Section className="relative py-0 bg-heading text-white overflow-hidden rounded-b-[40px] md:rounded-b-[80px]">
+                <div className="absolute inset-0 z-0 overflow-hidden">
                     <div className="w-[800px] h-[800px] bg-primary/20 rounded-full blur-[200px] absolute -top-1/2 -right-1/4" />
                     <div className="w-[600px] h-[600px] bg-primary/10 rounded-full blur-[180px] absolute -bottom-1/4 -left-1/4" />
+                    <div className="absolute inset-0 noise-panel opacity-10" />
                 </div>
 
-                <div className="container mx-auto px-6 relative z-10 text-center">
+                <div className="container mx-auto px-6 relative z-10 text-center pt-40 pb-20">
                     <Reveal>
-                        <h1 className="text-6xl md:text-[12vw] font-black tracking-tighter leading-[0.7] italic mb-12">
+                        <h1 className="text-6xl md:text-[14vw] font-black tracking-tighter leading-[0.7] italic mb-8 md:mb-12 uppercase">
                             GET IN <br />
                             <span className="text-primary italic">TOUCH.</span>
                         </h1>
                     </Reveal>
                     <Reveal delay={0.1}>
-                        <p className="text-xl md:text-2xl text-white/60 max-w-2xl mx-auto leading-relaxed mt-12">
+                        <p className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto leading-relaxed mt-12 italic font-medium">
                             Have questions or ready to book your diagnostic scan? Our medical team is available to assist you.
                         </p>
                     </Reveal>
                 </div>
             </Section>
+
 
             {/* Main Contact Grid */}
             <Section className="py-24 -mt-20">

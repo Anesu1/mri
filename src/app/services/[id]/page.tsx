@@ -27,44 +27,47 @@ export default function SingleServicePage({ params }: PageProps) {
     }
 
     return (
-        <main className="pt-20">
-            {/* Service Hero */}
-            <Section className="relative min-h-[60vh] md:min-h-[70vh] flex items-end pb-16 md:pb-24 text-white overflow-hidden bg-heading">
-                <div className="absolute inset-0 z-0">
+        <main className="">
+            {/* Service Hero: Seamless Top Design */}
+            <Section className="relative min-h-[70vh] md:min-h-[80vh] flex items-end pb-16 md:pb-24 text-white overflow-hidden bg-heading pt-40 !py-0">
+                <div className="absolute inset-0 z-0 overflow-hidden">
                     <Image
                         src={service.image}
                         alt={service.title}
                         fill
-                        className="object-cover opacity-30 grayscale hover:opacity-50 transition-opacity duration-1000 group-hover:scale-105"
+                        className="object-cover opacity-30 grayscale hover:opacity-50 transition-opacity duration-1000"
+                        priority
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-heading via-heading/40 to-transparent" />
+                    <div className="absolute inset-0 noise-panel opacity-10" />
                 </div>
 
-                <div className="container mx-auto px-4 md:px-6 relative z-10">
+                <div className="container mx-auto px-4 md:px-6 relative z-10 pt-40 pb-20">
                     <Reveal>
-                        <Link href="/services" className="inline-flex items-center gap-2 text-white/40 hover:text-white transition-colors uppercase tracking-[0.2em] text-[10px] font-black mb-8 md:mb-12">
-                            <ArrowLeft size={16} /> All Services
+                        <Link href="/services" className="inline-flex items-center gap-2 text-primary hover:text-white transition-colors uppercase tracking-[0.3em] text-[10px] font-black mb-8 md:mb-12 group">
+                            <ArrowLeft size={14} className="group-hover:-translate-x-2 transition-transform" /> Back to Divisions
                         </Link>
                     </Reveal>
                     <Reveal delay={0.1}>
-                        <h1 className="text-4xl sm:text-6xl md:text-[10vw] font-black tracking-tighter leading-[1] md:leading-[0.7] mt-4 uppercase italic">
+                        <h1 className="text-5xl sm:text-7xl md:text-[12vw] font-black tracking-tighter leading-[0.8] mt-4 uppercase italic">
                             {service.title}.
                         </h1>
                     </Reveal>
-                    <div className="grid lg:grid-cols-2 gap-8 md:gap-12 mt-8 md:mt-16 items-start">
+                    <div className="grid lg:grid-cols-2 gap-8 md:gap-12 mt-12 md:mt-16 items-start">
                         <Reveal delay={0.2}>
-                            <p className="text-lg md:text-3xl text-white/60 tracking-tight leading-snug md:leading-tight italic max-w-xl">
+                            <p className="text-xl md:text-3xl text-white/50 tracking-tighter leading-tight italic max-w-xl">
                                 "{service.description}"
                             </p>
                         </Reveal>
                         <Reveal delay={0.3}>
-                            <Button size="lg" className="w-full sm:w-auto rounded-full px-12 h-16 md:h-20 text-lg md:text-xl font-black italic">
+                            <Button size="lg" className="w-full sm:w-auto h-16 md:h-20 px-12 md:px-16 text-lg md:text-xl rounded-full shadow-2xl shadow-primary/20">
                                 Book This Exam <ArrowUpRight className="ml-2" />
                             </Button>
                         </Reveal>
                     </div>
                 </div>
             </Section>
+
 
             {/* Content Details */}
             <Section className="py-20 md:py-32">

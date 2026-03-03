@@ -21,9 +21,8 @@ export default function Reveal({
     return (
         <motion.div
             className={className}
-            initial={{ y, opacity: 0, filter: "blur(10px)" }}
-
-            whileInView={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+            initial={{ y, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{
                 duration,
@@ -35,4 +34,3 @@ export default function Reveal({
         </motion.div>
     );
 }
-

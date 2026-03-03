@@ -34,17 +34,18 @@ export default function Button({
 
     return (
         <motion.button
-            whileHover={{ y: -2, scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            whileHover={{ y: -4, scale: 1.02 }}
+            whileTap={{ scale: 0.96 }}
+            transition={{ type: "spring", stiffness: 500, damping: 15 }}
             onClick={onClick}
             className={cn(
-                "rounded-full font-semibold transition-colors duration-200 flex items-center justify-center gap-2",
+                "rounded-full font-bold transition-all duration-300 flex items-center justify-center gap-2 shadow-sm hover:shadow-xl",
                 variants[variant],
                 sizes[size],
                 className
             )}
         >
+
             {children}
         </motion.button>
     );

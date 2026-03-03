@@ -4,6 +4,9 @@ import { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Button from "@/components/ui/Button";
+import Reveal from "@/components/ui/Reveal";
+import Section from "@/components/ui/Section";
+
 
 const services = [
     {
@@ -40,22 +43,24 @@ export default function HorizontalServices() {
     return (
         <>
             {/* Desktop: Horizontal Scroll */}
-            <div ref={containerRef} className="relative hidden lg:block h-[350vh] bg-[#F8F9FA]">
+            <div ref={containerRef} className="relative hidden lg:block h-[250vh] bg-bg-white">
+
                 <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
-                    <div className="container mx-auto px-16 mb-20 flex items-end justify-between">
-                        <div className="space-y-4">
-                            <span className="text-sm font-semibold text-heading/50 uppercase tracking-widest italic">Our Services</span>
-                            <h2 className="text-[64px] font-black text-heading leading-[1] max-w-2xl tracking-tighter italic">
-                                Expert Healthcare <br />
+                    <div className="container mx-auto px-16 mb-12 flex items-end justify-between">
+                        <div className="space-y-3">
+                            <span className="text-[10px] font-bold text-primary uppercase tracking-[0.3em] italic">Our Medical Divisions</span>
+                            <h2 className="text-[5vw] font-black text-heading leading-[0.9] max-w-2xl tracking-tighter italic uppercase">
+                                Expert Care <br />
                                 <span className="text-primary italic">Tailored to You.</span>
                             </h2>
                         </div>
                         <Link href="/services">
-                            <Button className="rounded-full px-12 py-6 bg-[#2563EB] hover:bg-blue-700 text-white font-bold text-sm transition-all shadow-xl shadow-blue-500/20 h-auto">
-                                See All Services
+                            <Button size="lg" className="rounded-full px-12 py-6 shadow-xl shadow-primary/20 h-auto">
+                                Explore All Services
                             </Button>
                         </Link>
                     </div>
+
 
                     <motion.div
                         style={{ x }}
@@ -74,42 +79,48 @@ export default function HorizontalServices() {
             </div>
 
             {/* Mobile/Tablet: Standard Vertical List */}
-            <div className="lg:hidden bg-[#F8F9FA] py-20 px-6">
-                <div className="mb-12 space-y-4 text-center">
-                    <span className="text-xs font-bold text-primary uppercase tracking-widest">Our Services</span>
-                    <h2 className="text-4xl font-black text-heading tracking-tighter italic leading-tight">
-                        Expert Healthcare <br />
-                        Tailored to You.
-                    </h2>
+            <div className="lg:hidden bg-bg-white py-16 md:py-24 px-4 md:px-6">
+                <div className="mb-10 text-center">
+                    <Reveal>
+                        <span className="text-[10px] font-bold text-primary uppercase tracking-[0.3em] mb-4 block">Medical Specialties</span>
+                    </Reveal>
+                    <Reveal delay={0.1}>
+                        <h2 className="text-3xl sm:text-4xl font-black text-heading tracking-tighter italic leading-[0.9] uppercase">
+                            Expert Care <br />
+                            <span className="text-primary italic">Tailored to You.</span>
+                        </h2>
+                    </Reveal>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {services.map((service, i) => (
-                        <div key={i} className="relative h-[400px] rounded-[40px] overflow-hidden group">
+                        <div key={i} className="relative aspect-[4/5] rounded-[32px] overflow-hidden group">
                             <Image
                                 src={service.image}
                                 alt={service.title}
                                 fill
-                                className="object-cover"
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                                className="object-cover transition-transform duration-1000 group-hover:scale-110"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                            <div className="absolute inset-x-6 bottom-6">
-                                <div className="glass-light p-6 rounded-[24px] backdrop-blur-xl border border-white/20">
-                                    <h4 className="text-xl font-black text-white italic">{service.title}</h4>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                            <div className="absolute inset-x-4 bottom-4">
+                                <div className="glass-light p-5 rounded-[24px] backdrop-blur-3xl border border-white/20">
+                                    <h4 className="text-xl font-black text-white italic tracking-tighter uppercase">{service.title}</h4>
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div>
 
-                <div className="mt-12 text-center">
+                <div className="mt-8 text-center px-4">
                     <Link href="/services">
-                        <Button className="w-full sm:w-auto rounded-full px-10 py-5 bg-[#2563EB] text-white font-bold">
-                            View All Services
+                        <Button size="lg" className="w-full sm:w-auto h-16 px-12 rounded-full shadow-xl shadow-primary/20">
+                            Explore All Divisions
                         </Button>
                     </Link>
                 </div>
             </div>
+
         </>
     );
 }

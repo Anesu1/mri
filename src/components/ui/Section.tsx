@@ -19,8 +19,9 @@ export default function Section({
     return (
         <section
             id={id}
-            className={cn("py-20 md:py-32 overflow-hidden", className)}
+            className={cn("py-16 md:py-24 overflow-hidden", className)}
         >
+
             <div
                 className={cn(
                     box ? "container mx-auto px-6" : "",

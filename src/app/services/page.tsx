@@ -12,27 +12,29 @@ const icons = [Shield, Zap, Microscope];
 
 export default function ServicesPage() {
     return (
-        <main className="pt-20">
-            {/* Page Hero */}
-            <Section className="relative py-24 md:py-32 bg-heading text-white overflow-hidden rounded-b-[40px] md:rounded-b-[60px]">
+        <main className="">
+            {/* Page Hero: Seamless Top Design */}
+            <Section className="relative py-32 md:py-48 bg-heading text-white overflow-hidden rounded-b-[40px] md:rounded-b-[80px] pt-40 !py-0">
                 <div className="absolute inset-0 z-0">
                     <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[180px] translate-x-1/2 -translate-y-1/2" />
+                    <div className="absolute inset-0 noise-panel opacity-10" />
                 </div>
 
-                <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
+                <div className="container mx-auto px-4 md:px-6 relative z-10 text-center pb-20">
                     <Reveal>
-                        <h1 className="text-4xl sm:text-6xl md:text-[8vw] font-black tracking-tighter leading-[0.9] italic mb-8 md:mb-12 uppercase">
+                        <h1 className="text-5xl sm:text-7xl md:text-[12vw] font-black tracking-tighter leading-[0.8] italic mb-8 md:mb-12 uppercase">
                             DIAGNOSTIC <br />
                             <span className="text-primary italic">PRECISION.</span>
                         </h1>
                     </Reveal>
                     <Reveal delay={0.1}>
-                        <p className="text-lg md:text-2xl text-white/60 max-w-3xl mx-auto leading-relaxed mt-8 md:mt-12 font-medium">
+                        <p className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto leading-relaxed mt-8 md:mt-12 font-medium italic">
                             Comprehensive radiological services utilizing the world's most advanced imaging technology to provide clarity and care.
                         </p>
                     </Reveal>
                 </div>
             </Section>
+
 
             {/* List of Services */}
             <Section className="py-16 md:py-24">

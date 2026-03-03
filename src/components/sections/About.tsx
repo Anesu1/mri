@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 export default function About() {
     return (
         <Section className="bg-bg-primary">
-            <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center px-4 md:px-6">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center px-4 md:px-6">
                 {/* Left: Image Grid */}
                 <div className="relative group max-w-[500px] lg:max-w-none mx-auto lg:mx-0">
                     <Reveal>
@@ -55,17 +55,18 @@ export default function About() {
                     </Reveal>
 
                     <Reveal delay={0.1}>
-                        <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-heading mb-6 leading-tight italic tracking-tighter">
+                        <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-heading mb-6 leading-[0.9] italic tracking-tighter uppercase">
                             A Personal Approach to <br />
                             <span className="text-gradient italic">Your Well-being.</span>
                         </h3>
                     </Reveal>
 
                     <Reveal delay={0.2}>
-                        <p className="text-body mb-8 leading-relaxed max-w-lg mx-auto lg:mx-0 font-medium opacity-80">
+                        <p className="text-body mb-6 leading-relaxed max-w-lg mx-auto lg:mx-0 font-medium opacity-70">
                             We believe that every patient deserves high-quality, personalized medical attention. Our team of specialists utilizes the latest advancements in medical technology to provide comprehensive care.
                         </p>
                     </Reveal>
+
 
                     <Reveal delay={0.3}>
                         <ul className="space-y-4 mb-10 text-left max-w-md mx-auto lg:mx-0">

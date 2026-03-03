@@ -35,23 +35,29 @@ const posts = [
 
 export default function BlogPage() {
     return (
-        <main className="pt-20">
-            {/* Blog Hero */}
-            <Section className="relative py-32 bg-heading text-white overflow-hidden rounded-b-[60px]">
-                <div className="container mx-auto px-6 relative z-10 text-center">
+        <main className="">
+            {/* Blog Hero: Immersive Top Design */}
+            <Section className="relative py-0 bg-heading text-white overflow-hidden rounded-b-[40px] md:rounded-b-[80px]">
+                <div className="absolute inset-0 z-0">
+                    <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] -translate-x-1/2 -translate-y-1/2" />
+                    <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-bg-primary to-transparent" />
+                    <div className="absolute inset-0 noise-panel opacity-10" />
+                </div>
+                <div className="container mx-auto px-6 relative z-10 text-center pt-40 pb-20">
                     <Reveal>
-                        <h1 className="text-6xl md:text-[10vw] font-black tracking-tighter leading-[0.7] italic mb-12">
+                        <h1 className="text-6xl md:text-[14vw] font-black tracking-tighter leading-[0.7] italic mb-8 md:mb-12 uppercase">
                             MEDICAL <br />
                             <span className="text-primary italic">INSIGHTS.</span>
                         </h1>
                     </Reveal>
                     <Reveal delay={0.1}>
-                        <p className="text-xl md:text-2xl text-white/60 max-w-2xl mx-auto leading-relaxed mt-12">
+                        <p className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto leading-relaxed mt-12 italic font-medium">
                             Stay at the leading edge of diagnostic science with the latest research and news from Harare's imaging specialists.
                         </p>
                     </Reveal>
                 </div>
             </Section>
+
 
             {/* Featured Post Panel */}
             <Section className="py-24 -mt-20">

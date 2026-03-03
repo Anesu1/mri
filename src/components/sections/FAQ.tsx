@@ -63,23 +63,24 @@ export function FAQItem({ question, answer }: { question: string; answer: string
 
 export default function FAQ() {
     return (
-        <Section className="bg-bg-white">
+        <Section className="bg-bg-white border-t border-border">
             <div className="max-w-3xl mx-auto">
-                <div className="text-center mb-16">
+                <div className="text-center mb-12">
                     <Reveal>
-                        <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-4">FAQ</h2>
+                        <h2 className="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-4">FAQ</h2>
                     </Reveal>
                     <Reveal delay={0.1}>
-                        <h3 className="text-4xl font-bold text-heading">Common Questions</h3>
+                        <h3 className="text-3xl md:text-4xl font-black text-heading italic tracking-tighter uppercase">Common Questions</h3>
                     </Reveal>
                 </div>
 
-                <div className="glass rounded-[32px] p-8 md:p-12 border border-border shadow-soft">
+                <div className="glass rounded-[32px] p-6 md:p-10 border border-border shadow-soft">
                     {faqs.map((faq, i) => (
                         <FAQItem key={i} {...faq} />
                     ))}
                 </div>
             </div>
         </Section>
+
     );
 }

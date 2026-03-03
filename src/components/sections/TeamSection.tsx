@@ -37,20 +37,20 @@ export default function TeamSection() {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
     return (
-        <Section className="bg-white">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 px-6">
+        <Section className="bg-bg-white relative noise-panel">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-10 px-6">
                 <div className="max-w-2xl">
                     <Reveal>
-                        <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-4">Our Medical Team</h2>
+                        <h2 className="text-xs font-bold text-primary uppercase tracking-[0.3em] mb-4">Our Medical Team</h2>
                     </Reveal>
                     <Reveal delay={0.1}>
-                        <h3 className="text-4xl md:text-6xl font-black text-heading tracking-tighter italic">World-Class Specialists.</h3>
+                        <h3 className="text-3xl md:text-5xl font-black text-heading tracking-tighter italic uppercase">World-Class Specialists.</h3>
                     </Reveal>
                 </div>
             </div>
 
             {/* Desktop: Fancy Expanding Flex */}
-            <div className="hidden lg:flex h-[750px] gap-4 px-6 overflow-hidden">
+            <div className="hidden lg:flex h-[600px] gap-2 px-6 overflow-hidden">
                 {team.map((member, i) => {
                     const isHovered = hoveredIndex === i;
                     const isAnythingHovered = hoveredIndex !== null;
@@ -62,38 +62,38 @@ export default function TeamSection() {
                             onMouseLeave={() => setHoveredIndex(null)}
                             layout
                             transition={{
-                                duration: 0.6,
-                                ease: [0.25, 1, 0.5, 1]
+                                duration: 0.8,
+                                ease: [0.16, 1, 0.3, 1]
                             }}
                             className={cn(
-                                "relative overflow-hidden rounded-[48px] cursor-pointer transition-all duration-500",
-                                isHovered ? "flex-[2.5]" : "flex-1",
-                                isAnythingHovered && !isHovered ? "opacity-40 grayscale-[0.5]" : "opacity-100 grayscale-0"
+                                "relative overflow-hidden rounded-[32px] cursor-pointer transition-all duration-700",
+                                isHovered ? "flex-[3]" : "flex-1",
+                                isAnythingHovered && !isHovered ? "opacity-30 grayscale" : "opacity-100 grayscale-0"
                             )}
                         >
                             <motion.div
                                 animate={{
-                                    scale: isHovered ? 1.1 : 1,
-                                    x: isHovered ? "-5%" : "0%",
+                                    scale: isHovered ? 1.05 : 1,
                                 }}
-                                transition={{ duration: 0.8, ease: "circOut" }}
+                                transition={{ duration: 1, ease: "circOut" }}
                                 className="absolute inset-0 w-full h-full"
                             >
                                 <Image
                                     src={member.image}
                                     alt={member.name}
                                     fill
+                                    sizes="(max-width: 1536px) 50vw, 800px"
                                     className="object-cover"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-transparent" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent" />
                             </motion.div>
 
-                            <div className="absolute inset-0 p-12 flex flex-col justify-end">
-                                <motion.div layout>
-                                    <h4 className="text-2xl md:text-4xl font-black text-white mb-2 whitespace-nowrap tracking-tighter italic">
+                            <div className="absolute inset-0 p-10 flex flex-col justify-end">
+                                <motion.div layout transition={{ duration: 0.6 }}>
+                                    <h4 className="text-xl md:text-3xl font-black text-white mb-1 whitespace-nowrap tracking-tighter italic uppercase">
                                         {member.name}
                                     </h4>
-                                    <p className="text-primary font-bold mb-6 whitespace-nowrap uppercase tracking-[0.2em] text-xs">
+                                    <p className="text-primary font-bold mb-4 whitespace-nowrap uppercase tracking-[0.2em] text-[10px]">
                                         {member.role}
                                     </p>
                                 </motion.div>
@@ -101,18 +101,15 @@ export default function TeamSection() {
                                 <AnimatePresence>
                                     {isHovered && (
                                         <motion.div
-                                            initial={{ opacity: 0, y: 20 }}
+                                            initial={{ opacity: 0, y: 10 }}
                                             animate={{ opacity: 1, y: 0 }}
-                                            exit={{ opacity: 0, y: 20 }}
-                                            transition={{ duration: 0.5, ease: "circOut" }}
+                                            exit={{ opacity: 0, y: 10 }}
+                                            transition={{ duration: 0.4, delay: 0.2 }}
                                             className="max-w-xs"
                                         >
-                                            <p className="text-white/80 text-lg leading-relaxed mb-4 italic">
+                                            <p className="text-white/70 text-base leading-snug mb-4 italic line-clamp-3">
                                                 {member.bio}
                                             </p>
-                                            <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors">
-                                                <ArrowUpRight size={20} />
-                                            </div>
                                         </motion.div>
                                     )}
                                 </AnimatePresence>
@@ -123,26 +120,27 @@ export default function TeamSection() {
             </div>
 
             {/* Mobile/Tablet: Standard Grid */}
-            <div className="lg:hidden grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
+            <div className="lg:hidden grid grid-cols-1 md:grid-cols-2 gap-4 px-4 pb-12">
                 {team.map((member, i) => (
-                    <div key={i} className="relative aspect-[3/4] rounded-[32px] overflow-hidden group">
+                    <div key={i} className="relative aspect-[4/5] rounded-[24px] overflow-hidden group">
                         <Image
                             src={member.image}
                             alt={member.name}
                             fill
+                            sizes="(max-width: 768px) 100vw, 50vw"
                             className="object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-transparent" />
-                        <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                            <h4 className="text-3xl font-black text-white mb-1 italic tracking-tighter">{member.name}</h4>
-                            <p className="text-primary font-bold uppercase tracking-widest text-[10px] mb-4">{member.role}</p>
-                            <p className="text-white/60 text-sm line-clamp-2 italic">{member.bio}</p>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent" />
+                        <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                            <h4 className="text-2xl font-black text-white mb-1 italic tracking-tighter uppercase">{member.name}</h4>
+                            <p className="text-primary font-bold uppercase tracking-widest text-[9px] mb-3">{member.role}</p>
+                            <p className="text-white/60 text-xs line-clamp-2 italic">{member.bio}</p>
                         </div>
                     </div>
                 ))}
             </div>
-
         </Section>
+
     );
 }
 

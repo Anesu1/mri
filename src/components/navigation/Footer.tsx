@@ -14,9 +14,9 @@ export default function Footer() {
     });
 
     // The expansion effects
-    const scale = useTransform(scrollYProgress, [0, 1], [0.7, 1]);
-    const y = useTransform(scrollYProgress, [0, 1], [200, 0]);
-    const borderRadius = useTransform(scrollYProgress, [0, 1], ["160px", "0px"]);
+    const scale = useTransform(scrollYProgress, [0, 1], [0.85, 1]);
+    const yTransform = useTransform(scrollYProgress, [0, 1], [100, 0]);
+    const borderRadius = useTransform(scrollYProgress, [0, 1], ["80px", "0px"]);
     const opacity = useTransform(scrollYProgress, [0, 0.4, 1], [0, 0.5, 1]);
 
     return (
@@ -24,24 +24,25 @@ export default function Footer() {
             <motion.footer
                 ref={containerRef}
                 style={{
-                    scale,
-                    y,
-                    borderRadius,
+                    scale: typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : scale,
+                    y: yTransform,
+                    borderRadius: typeof window !== 'undefined' && window.innerWidth < 768 ? "0px" : borderRadius,
                 }}
-                className="bg-heading pt-48 pb-20 text-white overflow-hidden relative origin-bottom min-h-screen flex flex-col justify-end"
+                className="bg-heading pt-20 md:pt-32 pb-10 md:pb-20 text-white overflow-hidden relative origin-bottom min-h-[70vh] md:min-h-screen flex flex-col justify-end"
             >
+
                 <div className="container mx-auto px-6 relative z-10">
                     {/* Big Call to Action at the top of the footer */}
                     <motion.div
                         style={{ opacity }}
-                        className="mb-32"
+                        className="mb-16 md:mb-24"
                     >
-                        <h2 className="text-[12vw] md:text-[15vw] font-black tracking-tighter italic leading-[0.7] text-white select-none mb-12">
-                            LET'S <br />
-                            <span className="text-primary italic">CONNECT.</span>
+                        <h2 className="text-[12vw] md:text-[14vw] font-black tracking-tighter italic leading-[0.7] text-white select-none mb-8 uppercase">
+                            Let's <br />
+                            <span className="text-primary italic">Connect.</span>
                         </h2>
 
-                        <div className="flex flex-col md:flex-row items-center justify-between gap-12 border-b border-white/10 pb-20">
+                        <div className="flex flex-col md:flex-row items-center justify-between gap-12 border-b border-white/10 pb-16">
                             <div className="flex flex-col gap-4">
                                 <p className="text-white/60 text-xl max-w-sm">
                                     Ready to experience the next level of diagnostic excellence in Harare?
